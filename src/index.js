@@ -93,10 +93,10 @@ const Book = ({ imgLink, name, writer, rating, prise }) => {
     <div className="book">
       <img src={imgLink} alt="bookCover" />
       <h4>{name}</h4>
-      <p>{writer}</p>
+      <p style={{ color: "#617d98", marginLeft: 5 }}>{writer}</p>
       <div>{rating}</div>
       <h4>
-        <b>${prise}</b>
+        <b style={{ color: "red" }}>${prise}</b>
       </h4>
     </div>
   );
