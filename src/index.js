@@ -1,47 +1,105 @@
 import React from "react";
 import ReactDom from "react-dom";
+import "./index.css";
 
-// nested components
-//  React tools
+const listOfBooks = [
+  {
+    imgLink:
+      "https://images-na.ssl-images-amazon.com/images/I/91-EIJiYneL._AC_UL200_SR200,200_.jpg",
+    name: "Atomic Habits",
+    writer: "James Clear",
+    prise: 123.5,
+  },
+  {
+    imgLink:
+      "https://images-na.ssl-images-amazon.com/images/I/81s0B6NYXML._AC_UL200_SR200,200_.jpg",
+    name: "It Ends with Us: A Novel",
+    writer: "Colleen Hoover",
+    prise: 20.4,
+  },
+  {
+    imgLink:
+      "https://images-na.ssl-images-amazon.com/images/I/617uZq23IPL._AC_UL200_SR200,200_.jpg",
+    name: "Reminders of Him: A Novel",
+    writer: "Colleen Hoover",
+    prise: 34.5,
+  },
+  {
+    imgLink:
+      "https://images-na.ssl-images-amazon.com/images/I/91-EIJiYneL._AC_UL200_SR200,200_.jpg",
+    name: "Atomic Habits",
+    writer: "James Clear",
+    prise: 123.5,
+  },
+  {
+    imgLink:
+      "https://images-na.ssl-images-amazon.com/images/I/81s0B6NYXML._AC_UL200_SR200,200_.jpg",
+    name: "It Ends with Us: A Novel",
+    writer: "Colleen Hoover",
+    prise: 20.4,
+  },
+  {
+    imgLink:
+      "https://images-na.ssl-images-amazon.com/images/I/617uZq23IPL._AC_UL200_SR200,200_.jpg",
+    name: "Reminders of Him: A Novel",
+    writer: "Colleen Hoover",
+    prise: 34.5,
+  },
+  {
+    imgLink:
+      "https://images-na.ssl-images-amazon.com/images/I/91-EIJiYneL._AC_UL200_SR200,200_.jpg",
+    name: "Atomic Habits",
+    writer: "James Clear",
+    prise: 123.5,
+  },
+  {
+    imgLink:
+      "https://images-na.ssl-images-amazon.com/images/I/81s0B6NYXML._AC_UL200_SR200,200_.jpg",
+    name: "It Ends with Us: A Novel",
+    writer: "Colleen Hoover",
+    prise: 20.4,
+  },
+  {
+    imgLink:
+      "https://images-na.ssl-images-amazon.com/images/I/617uZq23IPL._AC_UL200_SR200,200_.jpg",
+    name: "Reminders of Him: A Novel",
+    writer: "Colleen Hoover",
+    prise: 34.5,
+  },
+];
 
-function Greeting() {
-  const obj = { name: "Vika", age: 26 };
-  const arr = [1, 2, "a"];
+// CSS
 
+function BookList() {
   return (
-    <div>
-      <Person name="John" surname="Smith" />
-      <Message
-        msg="Hello, I have issues with Internet"
-        title="Problems with Internet"
-        isSended={true}
-      />
-    </div>
+    <section className="bookList">
+      {listOfBooks.map((item) => {
+        return (
+          <Book
+            imgLink={item.imgLink}
+            name={item.name}
+            writer={item.writer}
+            prise={item.prise}
+            key={item.name}
+          />
+        );
+      })}
+    </section>
   );
 }
 
-const Person = (props) => {
-  // const props = {
-  //   name: 'John',
-  //   surname: 'Smith',
-  // };
-
+const Book = ({ imgLink, name, writer, rating, prise }) => {
   return (
-    <h3>
-      {props.name} {props.surname}
-    </h3>
+    <div className="book">
+      <img src={imgLink} alt="bookCover" />
+      <h4>{name}</h4>
+      <p>{writer}</p>
+      <div>{rating}</div>
+      <h4>
+        <b>${prise}</b>
+      </h4>
+    </div>
   );
 };
 
-const Message = ({ msg, title, isSended }) => {
-  return (
-    <>
-      {isSended ? alert("Message was sent") : alert("Something went wrong")}
-      <p>New Message</p>
-      <h3>{title}</h3>
-      <p>{msg}</p>
-    </>
-  );
-};
-
-ReactDom.render(<Greeting />, document.getElementById("root"));
+ReactDom.render(<BookList />, document.getElementById("root"));
