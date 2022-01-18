@@ -4,6 +4,7 @@ import "./index.css";
 
 const listOfBooks = [
   {
+    id: 1,
     imgLink:
       "https://images-na.ssl-images-amazon.com/images/I/91-EIJiYneL._AC_UL200_SR200,200_.jpg",
     name: "Atomic Habits",
@@ -11,6 +12,7 @@ const listOfBooks = [
     prise: 123.5,
   },
   {
+    id: 2,
     imgLink:
       "https://images-na.ssl-images-amazon.com/images/I/81s0B6NYXML._AC_UL200_SR200,200_.jpg",
     name: "It Ends with Us: A Novel",
@@ -18,6 +20,7 @@ const listOfBooks = [
     prise: 20.4,
   },
   {
+    id: 3,
     imgLink:
       "https://images-na.ssl-images-amazon.com/images/I/617uZq23IPL._AC_UL200_SR200,200_.jpg",
     name: "Reminders of Him: A Novel",
@@ -25,6 +28,7 @@ const listOfBooks = [
     prise: 34.5,
   },
   {
+    id: 4,
     imgLink:
       "https://images-na.ssl-images-amazon.com/images/I/91-EIJiYneL._AC_UL200_SR200,200_.jpg",
     name: "Atomic Habits",
@@ -32,6 +36,7 @@ const listOfBooks = [
     prise: 123.5,
   },
   {
+    id: 5,
     imgLink:
       "https://images-na.ssl-images-amazon.com/images/I/81s0B6NYXML._AC_UL200_SR200,200_.jpg",
     name: "It Ends with Us: A Novel",
@@ -39,6 +44,7 @@ const listOfBooks = [
     prise: 20.4,
   },
   {
+    id: 6,
     imgLink:
       "https://images-na.ssl-images-amazon.com/images/I/617uZq23IPL._AC_UL200_SR200,200_.jpg",
     name: "Reminders of Him: A Novel",
@@ -46,6 +52,7 @@ const listOfBooks = [
     prise: 34.5,
   },
   {
+    id: 7,
     imgLink:
       "https://images-na.ssl-images-amazon.com/images/I/91-EIJiYneL._AC_UL200_SR200,200_.jpg",
     name: "Atomic Habits",
@@ -53,6 +60,7 @@ const listOfBooks = [
     prise: 123.5,
   },
   {
+    id: 8,
     imgLink:
       "https://images-na.ssl-images-amazon.com/images/I/81s0B6NYXML._AC_UL200_SR200,200_.jpg",
     name: "It Ends with Us: A Novel",
@@ -60,6 +68,7 @@ const listOfBooks = [
     prise: 20.4,
   },
   {
+    id: 9,
     imgLink:
       "https://images-na.ssl-images-amazon.com/images/I/617uZq23IPL._AC_UL200_SR200,200_.jpg",
     name: "Reminders of Him: A Novel",
@@ -73,31 +82,23 @@ const listOfBooks = [
 function BookList() {
   return (
     <section className="bookList">
-      {listOfBooks.map((item) => {
-        return (
-          <Book
-            imgLink={item.imgLink}
-            name={item.name}
-            writer={item.writer}
-            prise={item.prise}
-            key={item.name}
-          />
-        );
+      {listOfBooks.map((book) => {
+        //1st variant
+        const { imgLink, name, writer, prise } = book;
+        // return <Book key={book.id} book={book} />;
+        //2nd variant
+        return <Book key={book.id} {...book} />;
       })}
-      <Book
-        name="Loren"
-        writer="Ipsum"
-        prise={0.0}
-        imgLink="https://images-na.ssl-images-amazon.com/images/I/81s0B6NYXML._AC_UL200_SR200,200_.jpg"
-      >
-        <p>Hello to everyone</p>
-      </Book>
     </section>
   );
 }
 
 const Book = (props) => {
-  const { imgLink, name, writer, rating, prise, children } = props;
+  // 1st variant
+  // const { imgLink, name, writer, rating, prise } = props.book;
+
+  //2nd variant
+  const { imgLink, name, writer, rating, prise } = props;
 
   return (
     <div className="book">
@@ -108,7 +109,6 @@ const Book = (props) => {
       <h4>
         <b style={{ color: "red" }}>${prise}</b>
       </h4>
-      {children}
     </div>
   );
 };
