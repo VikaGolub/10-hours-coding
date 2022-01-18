@@ -84,11 +84,21 @@ function BookList() {
           />
         );
       })}
+      <Book
+        name="Loren"
+        writer="Ipsum"
+        prise={0.0}
+        imgLink="https://images-na.ssl-images-amazon.com/images/I/81s0B6NYXML._AC_UL200_SR200,200_.jpg"
+      >
+        <p>Hello to everyone</p>
+      </Book>
     </section>
   );
 }
 
-const Book = ({ imgLink, name, writer, rating, prise }) => {
+const Book = (props) => {
+  const { imgLink, name, writer, rating, prise, children } = props;
+
   return (
     <div className="book">
       <img src={imgLink} alt="bookCover" />
@@ -98,6 +108,7 @@ const Book = ({ imgLink, name, writer, rating, prise }) => {
       <h4>
         <b style={{ color: "red" }}>${prise}</b>
       </h4>
+      {children}
     </div>
   );
 };
