@@ -1,29 +1,47 @@
 import React from "react";
 import ReactDom from "react-dom";
 
-// stateless functional component
-// always return JSX
-// camelCase for html attribute
+// nested components
+//  React tools
 
 function Greeting() {
+  const obj = { name: "Vika", age: 26 };
+  const arr = [1, 2, "a"];
+
   return (
-    <React.Fragment>
-      <>
-        <div>
-          <p>Hello World</p>
-        </div>
-        <div>Section2</div>
-      </>
-    </React.Fragment>
+    <div>
+      <Person name="John" surname="Smith" />
+      <Message
+        msg="Hello, I have issues with Internet"
+        title="Problems with Internet"
+        isSended={true}
+      />
+    </div>
   );
 }
 
-// const Greeting = () => {
-//   return React.createElement(
-//     "div",
-//     {},
-//     React.createElement("p", {}, "Hello World")
-//   );
-// };
+const Person = (props) => {
+  // const props = {
+  //   name: 'John',
+  //   surname: 'Smith',
+  // };
+
+  return (
+    <h3>
+      {props.name} {props.surname}
+    </h3>
+  );
+};
+
+const Message = ({ msg, title, isSended }) => {
+  return (
+    <>
+      {isSended ? alert("Message was sent") : alert("Something went wrong")}
+      <p>New Message</p>
+      <h3>{title}</h3>
+      <p>{msg}</p>
+    </>
+  );
+};
 
 ReactDom.render(<Greeting />, document.getElementById("root"));
