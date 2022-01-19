@@ -30,7 +30,9 @@ export const Book = ({
       <h4>
         <b style={{ color: "red" }}>${prise}</b>
       </h4>
-      <button onClick={clickHandler}>Read more...</button>
+      <button className="btn" onClick={clickHandler}>
+        Read more...
+      </button>
       <button
         onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>
           showAuthor(e, writer)

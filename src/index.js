@@ -1,17 +1,11 @@
 import React from "react";
 import ReactDom from "react-dom";
-import { Book } from "./Book/book.tsx";
-import { listOfBooks } from "./Book/books.ts";
+import App from "./app.js";
 import "./index.css";
 
-function BookList() {
-  return (
-    <section className="bookList">
-      {listOfBooks.map((book) => {
-        return <Book key={book.id} {...book} />;
-      })}
-    </section>
-  );
-}
-
-ReactDom.render(<BookList />, document.getElementById("root"));
+ReactDom.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById("root")
+);
