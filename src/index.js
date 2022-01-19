@@ -83,32 +83,45 @@ function BookList() {
   return (
     <section className="bookList">
       {listOfBooks.map((book) => {
-        //1st variant
-        const { imgLink, name, writer, prise } = book;
-        // return <Book key={book.id} book={book} />;
-        //2nd variant
         return <Book key={book.id} {...book} />;
       })}
     </section>
   );
 }
 
-const Book = (props) => {
-  // 1st variant
-  // const { imgLink, name, writer, rating, prise } = props.book;
+const Book = ({ imgLink, name, writer, rating, prise }) => {
+  // attribute, eventHandler
+  // onClick, onMouseOver
 
-  //2nd variant
-  const { imgLink, name, writer, rating, prise } = props;
+  const clickHandler = (e) => {
+    console.log(e);
+    console.log(e.target);
+    alert("Yess");
+  };
+
+  const showAuthor = (e, author) => {
+    console.log(e);
+    console.log(e.target);
+    console.log(author);
+  };
 
   return (
     <div className="book">
-      <img src={imgLink} alt="bookCover" />
+      <img
+        src={imgLink}
+        alt="bookCover"
+        onMouseOver={() => {
+          console.log(name);
+        }}
+      />
       <h4>{name}</h4>
       <p style={{ color: "#617d98", marginLeft: 5 }}>{writer}</p>
       <div>{rating}</div>
       <h4>
         <b style={{ color: "red" }}>${prise}</b>
       </h4>
+      <button onClick={clickHandler}>Read more...</button>
+      <button onClick={(e) => showAuthor(e, writer)}>About Author</button>
     </div>
   );
 };
