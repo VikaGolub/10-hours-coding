@@ -29,7 +29,7 @@ const UseStateCounter = () => {
       </section>
       <section>
         <h3>More complex tasks</h3>
-        <p>{value}</p>
+        <h1>{value}</h1>
         <button onClick={complexIncrease} className="btn">
           Complex increase
         </button>
